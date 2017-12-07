@@ -1,0 +1,22 @@
+{
+  "name": "afreeca.server",
+  "version": "1.0.0",
+  "description": "* 注册用户\r * 创建项目\r * 定义接口：url+response body",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiadi0801/afreeca.server.git"
+  },
+  "author": "jiadi0801",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jiadi0801/afreeca.server/issues"
+  },
+  "homepage": "https://github.com/jiadi0801/afreeca.server#readme",
+  "dependencies": {
+    "hapi": "16.6.2"
+  }
+}
