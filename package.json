@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/jiadi0801/afreeca.server#readme",
   "dependencies": {
-    "hapi": "16.6.2"
+    "blueimp-md5": "^2.10.0",
+    "hapi": "16.6.2",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.28.0"
   }
 }
