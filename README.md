@@ -44,4 +44,3 @@ server {
 远程访问 1)my.cnf bind-address=0.0.0.0  2) user表 localhost -> %
 ## 部署node服务
 ## 启动node
-
