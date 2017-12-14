@@ -4,6 +4,7 @@
   "description": "* 注册用户\r * 创建项目\r * 定义接口：url+response body",
   "main": "index.js",
   "scripts": {
+    "db": "sequelize-auto -o \"./app/models\" -d afreeca -h 192.168.182.85 -u root -p 22306 -x jingdongfe -e mysql -c ./scripts/create-models.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,10 @@
     "koa": "^2.4.1",
     "mysql2": "^1.5.1",
     "sequelize": "^4.28.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "mysql": "^2.15.0",
+    "sequelize-auto": "^0.4.29"
   }
 }
