@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		create_user_id: {
 			type: DataTypes.STRING(100),
-			allowNull: true
+			allowNull: false
 		},
 		create_time: {
 			type: DataTypes.DATE,

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db": "sequelize-auto -o \"./app/models\" -d afreeca -h 192.168.182.85 -u root -p 22306 -x jingdongfe -e mysql -c ./scripts/create-models.js",
+    "dev": "cross-env NODE_ENV=dev && node app/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,9 +20,12 @@
   "homepage": "https://github.com/jiadi0801/afreeca.server#readme",
   "dependencies": {
     "blueimp-md5": "^2.10.0",
+    "chalk": "^2.3.0",
     "koa": "^2.4.1",
+    "koa-better-router": "^2.1.1",
     "mysql2": "^1.5.1",
-    "sequelize": "^4.28.0"
+    "sequelize": "^4.28.0",
+    "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
     "cross-env": "^5.1.1",
