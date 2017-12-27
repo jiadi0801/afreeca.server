@@ -16,7 +16,6 @@ const logger = winston.createLogger({
     format: winston.format.json(),
     transports: []
 });
-
 if (process.env.NODE_ENV !== 'production') {
     logger.add(new winston.transports.Console({
         timestamps: () => {

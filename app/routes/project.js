@@ -1,21 +1,40 @@
-const ProjectService = require('../services/ProjectService');
+const ServiceFactory = require('../services/Factory');
 const logger = require('../utils/logger');
 const Router = require('koa-better-router');
+const projectService = ServiceFactory.getServiceByName('projectService');
 
 const router = Router({prefix: '/project'}).loadMethods();
 
-let projectService = new ProjectService();
-
+/**
+ * /project/new
+ */
 router.get('/new', async (ctx, next) => {
     try {
         await projectService.addProject({
             username: 'jiadi0801',
-            proj_name: '接口创建项目'
+            proj_name: '接口创建项目1'
         });
         ctx.body = 'new success';
     } catch (e) {
         ctx.body = e.message;
     }
-})
+});
+/**
+ * /project/update
+ */
+router.get('/update', async (ctx, next) => {
+    try {
+        await projectService.updateProject({
+            id: 1,
+            username: 'jiadi0801',
+            proj_name: '接口更新项目',
+            desci: '描述2',
+            status: 'readonly'
+        });
+        ctx.body = 'update success';
+    } catch (e) {
+        ctx.body = e.message;
+    }
+});
 
 module.exports = router;

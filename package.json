@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db": "sequelize-auto -o \"./app/models\" -d afreeca -h 192.168.182.85 -u root -p 22306 -x jingdongfe -e mysql -c ./scripts/create-models.js",
-    "dev": "cross-env NODE_ENV=dev && node app/app.js",
+    "dev": "cross-env NODE_ENV=development && node app/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

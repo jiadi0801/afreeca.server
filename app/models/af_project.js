@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		proj_name: {
 			type: DataTypes.STRING(200),
-			allowNull: true
+			allowNull: false
 		},
 		desci: {
 			type: DataTypes.TEXT,
@@ -33,6 +33,11 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			allowNull: false,
 			defaultValue: 'CURRENT_TIMESTAMP(6)'
+		},
+		status: {
+			type: DataTypes.ENUM('readonly','deleted','normal'),
+			allowNull: true,
+			defaultValue: 'normal'
 		}
 	}, {
 		tableName: 'af_project',
