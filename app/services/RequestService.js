@@ -62,6 +62,8 @@ module.exports = class RequestService {
         });
         await voProj.save();
         logger.info(`创建api(${obj.req_name})成功`)
+
+        return voProj;
     }
 
     async updateRequest(obj) {
