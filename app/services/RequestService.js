@@ -87,7 +87,9 @@ module.exports = class RequestService {
             throw new Error('更新api失败');
         }
 
-        record = Object.assign(record, obj);
+        record = Object.assign(record, obj, {
+            modify_time: new Date()
+        });
         
         await record.save();
         logger.info(`更新api(${obj.req_name})成功`)
@@ -98,6 +100,6 @@ module.exports = class RequestService {
     }
 
     async getReqList(proj_id) {
-        
+
     }
 }

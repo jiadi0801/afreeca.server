@@ -32,6 +32,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.TEXT,
 			allowNull: true
 		},
+		raw_body: {
+			type: DataTypes.TEXT,
+			allowNull: true
+		},
 		create_time: {
 			type: DataTypes.DATE,
 			allowNull: false,
