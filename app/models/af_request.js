@@ -32,6 +32,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.TEXT,
 			allowNull: true
 		},
+		header_statusmap: {
+			type: DataTypes.TEXT,
+			allowNull: true
+		},
 		params: {
 			type: DataTypes.TEXT,
 			allowNull: true
@@ -43,6 +47,16 @@ module.exports = function(sequelize, DataTypes) {
 		proj_id: {
 			type: DataTypes.STRING(100),
 			allowNull: false
+		},
+		create_time: {
+			type: DataTypes.DATE,
+			allowNull: false,
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+		},
+		modify_time: {
+			type: DataTypes.DATE,
+			allowNull: false,
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
 		}
 	}, {
 		tableName: 'af_request',

@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const projRoute = require('./routes/project');
+const apiRoute = require('./routes/api');
 
 
 const app = new Koa();
@@ -15,6 +16,7 @@ app.use(async (ctx, next) => {
 //     ctx.body = 'Hello Koa';
 // });
 
-app.use(projRoute.middleware())
+app.use(projRoute.middleware());
+app.use(apiRoute.middleware());
 
 app.listen(3000);

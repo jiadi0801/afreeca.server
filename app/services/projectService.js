@@ -4,14 +4,14 @@ const Sequelize = require('../models').Sequelize;
 const Op = Sequelize.Op;
 const logger = require('../utils/logger');
 const uuidv4 = require('uuid/v4');
-const Joi = require('joi');
+const Joi = require('../utils/joi');
+// const Joi = require('joi');
 
 const addprojSchema = {
     proj_name: Joi.string().max(200).required(),
     username: Joi.string().required(),
     desci: Joi.any(),
 }
-
 const updateprojSchema = {
     proj_id: Joi.string().required(),
     proj_name: Joi.string().max(200).required(),

@@ -25,11 +25,11 @@ router.get('/new', async (ctx, next) => {
 router.get('/update', async (ctx, next) => {
     try {
         await projectService.updateProject({
-            proj_id: '9bf2e9d0-e51a-40b2-894f-a951deb7fa7a',
+            proj_id: '9e855935-4d24-4aa9-a840-9c06c1333367',
             username: 'jiadi0801',
             proj_name: '接口更新项目',
-            desci: '描述2',
-            status: 'readonly'
+            desci: '{"a":1}',
+            status: 'normal'
         });
         ctx.body = 'update success';
     } catch (e) {

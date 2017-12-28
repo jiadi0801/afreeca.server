@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		status: {
 			type: DataTypes.ENUM('readonly','deleted','normal'),
-			allowNull: true,
+			allowNull: false,
 			defaultValue: 'normal'
 		}
 	}, {
