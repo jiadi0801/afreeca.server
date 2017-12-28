@@ -10,31 +10,39 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		req_id: {
 			type: DataTypes.STRING(100),
-			allowNull: true
+			allowNull: false
 		},
 		req_name: {
+			type: DataTypes.STRING(200),
+			allowNull: false
+		},
+		desci: {
 			type: DataTypes.STRING(200),
 			allowNull: true
 		},
 		req_url: {
 			type: DataTypes.TEXT,
-			allowNull: true
+			allowNull: false
 		},
 		req_method: {
 			type: DataTypes.STRING(20),
+			allowNull: false
+		},
+		header: {
+			type: DataTypes.TEXT,
 			allowNull: true
 		},
-		desci: {
-			type: DataTypes.STRING(200),
+		params: {
+			type: DataTypes.TEXT,
 			allowNull: true
 		},
 		formdata: {
 			type: DataTypes.TEXT,
 			allowNull: true
 		},
-		content_type: {
-			type: DataTypes.STRING(200),
-			allowNull: true
+		proj_id: {
+			type: DataTypes.STRING(100),
+			allowNull: false
 		}
 	}, {
 		tableName: 'af_request',

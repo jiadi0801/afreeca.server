@@ -3,6 +3,7 @@ const sequelize = require('../models').sequelize;
 const Sequelize = require('../models').Sequelize;
 const Op = Sequelize.Op;
 const logger = require('../utils/logger');
+const uuidv4 = require('uuid/v4');
 
 module.exports = class ProjectService {
     /**
@@ -32,6 +33,7 @@ module.exports = class ProjectService {
         }
 
         let voProj = Project.build({
+            proj_id: uuidv4(),
             proj_name: projObj.proj_name,
             desci: projObj.desci,
             create_user_id: projObj.username,
@@ -43,7 +45,7 @@ module.exports = class ProjectService {
     }
 
     /**
-     * id, proj_name, username, desci
+     * proj_id, proj_name, username, desci
      * @param {*} projObj 
      */
     async updateProject(projObj) {
@@ -54,8 +56,8 @@ module.exports = class ProjectService {
 
         let record = await Project.findOne({
             where: {
-                id: {
-                    [Op.eq]: projObj.id
+                proj_id: {
+                    [Op.eq]: projObj.proj_id
                 },
                 create_user_id: {
                     [Op.eq]: projObj.username

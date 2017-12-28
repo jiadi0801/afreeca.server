@@ -25,7 +25,7 @@ router.get('/new', async (ctx, next) => {
 router.get('/update', async (ctx, next) => {
     try {
         await projectService.updateProject({
-            id: 1,
+            proj_id: '9bf2e9d0-e51a-40b2-894f-a951deb7fa7a',
             username: 'jiadi0801',
             proj_name: '接口更新项目',
             desci: '描述2',
