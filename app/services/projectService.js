@@ -4,6 +4,21 @@ const Sequelize = require('../models').Sequelize;
 const Op = Sequelize.Op;
 const logger = require('../utils/logger');
 const uuidv4 = require('uuid/v4');
+const Joi = require('joi');
+
+const addprojSchema = {
+    proj_name: Joi.string().max(200).required(),
+    username: Joi.string().required(),
+    desci: Joi.any(),
+}
+
+const updateprojSchema = {
+    proj_id: Joi.string().required(),
+    proj_name: Joi.string().max(200).required(),
+    username: Joi.string().required(),
+    desci: Joi.any(),
+    status: Joi.string(),
+}
 
 module.exports = class ProjectService {
     /**
@@ -11,8 +26,9 @@ module.exports = class ProjectService {
      * @param {*} projObj 
      */
     async addProject(projObj) {
-        if (!projObj.proj_name || !projObj.username) {
-            logger.error(`新建项目失败，不存在项目名称(${projObj.proj_name})或创建人(${projObj.username})`);
+        let result = Joi.validate(projObj, addprojSchema);
+        if (result.error) {
+            console.log(result.error);
             throw new Error('新建项目失败');
         }
 
@@ -49,8 +65,9 @@ module.exports = class ProjectService {
      * @param {*} projObj 
      */
     async updateProject(projObj) {
-        if (!projObj.proj_name || !projObj.username) {
-            logger.error(`更新项目失败，不存在项目名称(${projObj.proj_name})或创建人(${projObj.username})`);
+        let result = Joi.validate(projObj, updateprojSchema);
+        if (result.error) {
+            console.log(result.error);
             throw new Error('更新项目失败');
         }
 
