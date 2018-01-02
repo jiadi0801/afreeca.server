@@ -21,7 +21,7 @@ const update_res_schema = Object.assign({
 }, new_res_schema);
 
 module.exports = class ResponseService {
-    async newResponse(obj) {
+    async newResponse(obj, t) {
         let result = Joi.validate(obj, new_res_schema);
         if (result.error) {
             console.log(result.error);
@@ -50,11 +50,11 @@ module.exports = class ResponseService {
             modify_time: new Date()
         }, obj));
 
-        await voProj.save();
+        await voProj.save({transaction: t});
         logger.info(`创建api响应(${obj.res_name})成功`)
     }
 
-    async updateResponse(obj) {
+    async updateResponse(obj, t) {
         let result = Joi.validate(obj, update_res_schema);
         if (result.error) {
             console.log(result.error);
@@ -81,7 +81,7 @@ module.exports = class ResponseService {
             modify_time: new Date()
         });
         
-        await record.save();
+        await record.save({transaction: t});
         logger.info(`更新api(${obj.res_name})成功`)
     }
 

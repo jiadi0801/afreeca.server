@@ -14,7 +14,7 @@ const router = Router({prefix: '/api'}).loadMethods();
 router.get('/new', async (ctx, next) => {
     try {
         await sequelize.transaction(async t => {
-            var voReq = await requestService.newRequest({
+            let voReq = await requestService.newRequest({
                 req_name: '第2个api request部分',
                 desci: '',
                 req_url: '/mobile/annual2017/getPrizeList',
@@ -23,8 +23,8 @@ router.get('/new', async (ctx, next) => {
                 params: 'id=2',
                 formdata: '',
                 proj_id: '9e855935-4d24-4aa9-a840-9c06c1333367',
-            });
-                
+            }, t);
+            
             // TODO new Response 原子性
             // for 循环new response
             await responseService.newResponse({
@@ -35,9 +35,8 @@ router.get('/new', async (ctx, next) => {
                 body: '',
                 raw_body: '',
                 req_id: 'aa60b778-66a9-4e50-9be5-b0eb00e36d99',
-            });
-        })
-
+            }, t);
+        });
         ctx.body = 'new api success';
     } catch (e) {
         ctx.body = e.message;

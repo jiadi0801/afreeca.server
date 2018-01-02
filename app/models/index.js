@@ -7,6 +7,10 @@ const config    = require('../config/config')[env];
 const tableNames= require('../config/config')['tableNames'];
 const db        = {};
 
+const cls = require('continuation-local-storage');
+const namespace = cls.createNamespace('db-space');
+Sequelize.useCLS(namespace);
+
 let sequelize;
 if (config.use_env_variable) {
     sequelize = new Sequelize(process.env[config.use_env_variable], config);

@@ -12,7 +12,7 @@ router.get('/new', async (ctx, next) => {
     try {
         await projectService.addProject({
             username: 'jiadi0801',
-            proj_name: '接口创建项目1'
+            proj_name: '接口创建项目2'
         });
         ctx.body = 'new success';
     } catch (e) {

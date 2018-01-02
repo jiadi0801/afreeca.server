@@ -23,7 +23,7 @@ const update_req_schema = Object.assign({
 }, new_req_schema);
 
 module.exports = class RequestService {
-    async newRequest(obj) {
+    async newRequest(obj, t) {
         let result = Joi.validate(obj, new_req_schema);
         if (result.error) {
             console.log(result.error);
@@ -60,13 +60,13 @@ module.exports = class RequestService {
             create_time: new Date(),
             modify_time: new Date()
         });
-        await voProj.save();
+        await voProj.save({transaction: t});
         logger.info(`创建api(${obj.req_name})成功`)
 
         return voProj;
     }
 
-    async updateRequest(obj) {
+    async updateRequest(obj, t) {
         let result = Joi.validate(obj, update_req_schema);
         if (result.error) {
             console.log(result.error);
@@ -93,7 +93,7 @@ module.exports = class RequestService {
             modify_time: new Date()
         });
         
-        await record.save();
+        await record.save({transaction: t});
         logger.info(`更新api(${obj.req_name})成功`)
     }
 

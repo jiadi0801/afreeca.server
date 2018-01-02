@@ -25,7 +25,7 @@ module.exports = class ProjectService {
      * proj_name, username, desci
      * @param {*} projObj 
      */
-    async addProject(projObj) {
+    async addProject(projObj, t) {
         let result = Joi.validate(projObj, addprojSchema);
         if (result.error) {
             console.log(result.error);
@@ -56,15 +56,15 @@ module.exports = class ProjectService {
             create_time: new Date(),
             modify_time: new Date()
         });
-        await voProj.save();
+        await voProj.save({transaction: t});
         logger.info(`创建项目(${projObj.proj_name})成功`)
     }
 
     /**
      * proj_id, proj_name, username, desci
-     * @param {*} projObj 
+     * @param {*} projObj
      */
-    async updateProject(projObj) {
+    async updateProject(projObj, t) {
         let result = Joi.validate(projObj, updateprojSchema);
         if (result.error) {
             console.log(result.error);
@@ -91,7 +91,7 @@ module.exports = class ProjectService {
         record.status = projObj.status || 'normal';
         record.modify_time = new Date();
 
-        await record.save();
+        await record.save({transaction: t});
         logger.info(`更新项目(${projObj.proj_name})成功`)
     }
 
